@@ -10,4 +10,11 @@ app.use(
   })
 )
 
-// next GET
+app.get('/', (request, response) => {
+    response.json({ info: 'Node.js, Express, and PostgresQL.' })
+})
+
+app.listen(port, () => {
+    console.log(`API is listening on port ${port}.`)
+})
+  

@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+const db = require('./queries')
 const port = 3000
 
 app.use(bodyParser.json())
@@ -10,11 +11,19 @@ app.use(
   })
 )
 
+// ROOT route
 app.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and PostgresQL.' })
+  response.json({ info: 'Node.js, Express, and PostgresQL.' })
 })
 
+// REST routes + actions
+app.get('/users', db.getUsers)
+app.get('/users/:id', db.getUserById)
+app.post('/users', db.createUser)
+app.put('/users/:id', db.updateUser)
+app.delete('/users/:id', db.deleteUser)
+
 app.listen(port, () => {
-    console.log(`API is listening on port ${port}.`)
+  console.log(`API is listening on port ${port}.`)
 })
-  
+

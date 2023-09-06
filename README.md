@@ -1,2 +1,3 @@
 # node-testapi-postgres
-Postgres Node API test app
+
+REST api using PostgreSQL, node.js, etc.
